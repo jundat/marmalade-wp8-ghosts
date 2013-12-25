@@ -38,7 +38,7 @@ bool MenuScene::init()
 
 	CCString* s = CCString::createWithFormat("YOUR BEST: %d", DataManager::GetInstance()->GetCurrenHighScore());
 	CCLabelBMFont* lbScore = CCLabelBMFont::create(s->getCString(), "Mia_64.fnt");
-	lbScore->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 - 250));
+	lbScore->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2 - 180));
 	this->addChild(lbScore, 0);
 	lbScore->runAction(CCFadeIn::create(1.0f));
 
@@ -49,11 +49,10 @@ bool MenuScene::init()
                                         menu_selector(MenuScene::playCallback));
     
 	playItem->setPosition(ccp(- playItem->getContentSize().width/2, 
-		origin.y + visibleSize.height/2 - 400));
+		origin.y + visibleSize.height/2 - 330));
 
 	playItem->runAction(CCEaseElasticOut::create(CCMoveTo::create(1.9f, ccp(origin.x + visibleSize.width/2,
-		origin.y + visibleSize.height/2 - 400))));
-
+		origin.y + visibleSize.height/2 - 330))));
 
 	CCMenuItemImage *aboutItem = CCMenuItemImage::create(
 		"about_button.png",
@@ -61,15 +60,26 @@ bool MenuScene::init()
 		this,
 		menu_selector(MenuScene::aboutCallback));
 
-	aboutItem->setPosition(ccp(visibleSize.width + aboutItem->getContentSize().width/2, aboutItem->getContentSize().height/2));
+	aboutItem->setPosition(ccp(visibleSize.width + aboutItem->getContentSize().width/2, 
+		playItem->getPositionY() - playItem->getContentSize().height/2 - aboutItem->getContentSize().height/2));
+	aboutItem->runAction(CCEaseElasticOut::create(CCMoveTo::create(1.9f, ccp(origin.x + visibleSize.width/2, 
+		playItem->getPositionY() - playItem->getContentSize().height/2 - aboutItem->getContentSize().height/2))));
 
-	aboutItem->runAction(CCEaseElasticOut::create(CCMoveTo::create(1.9f, ccp(origin.x + visibleSize.width/2, aboutItem->getContentSize().height/2 + 30))));
 
-// 	aboutItem->setPosition(ccp(visibleSize.width + aboutItem->getContentSize().width/2, 
-// 		playItem->getPositionY() - playItem->getContentSize().height/2 - aboutItem->getContentSize().height/2 - 10));
+	CCMenuItemImage *exitItem = CCMenuItemImage::create(
+		"exit_button.png",
+		"exit_button_press.png",
+		this,
+		menu_selector(MenuScene::exitCallback));
+
+	exitItem->setPosition(ccp(- exitItem->getContentSize().width/2,
+		aboutItem->getPositionY() - aboutItem->getContentSize().height/2 - exitItem->getContentSize().height/2 - 10));
+	exitItem->runAction(CCEaseElasticOut::create(CCMoveTo::create(1.9f, ccp(origin.x + visibleSize.width/2, 
+		aboutItem->getPositionY() - aboutItem->getContentSize().height/2 - exitItem->getContentSize().height/2))));
+
+// 	aboutItem->setPosition(ccp(visibleSize.width + aboutItem->getContentSize().width/2, aboutItem->getContentSize().height/2));
 // 
-// 	aboutItem->runAction(CCEaseElasticOut::create(CCMoveTo::create(1.9f, ccp(origin.x + visibleSize.width/2,
-// 		playItem->getPositionY() - playItem->getContentSize().height/2 - aboutItem->getContentSize().height/2 - 10))));
+// 	aboutItem->runAction(CCEaseElasticOut::create(CCMoveTo::create(1.9f, ccp(origin.x + visibleSize.width/2, aboutItem->getContentSize().height/2 + 30))));
 
 	//////////////////////////////////////////////////////////////////////////
 	
@@ -92,23 +102,11 @@ bool MenuScene::init()
 
 	//////////////////////////////////////////////////////////////////////////
 	
-
-// 	CCMenuItemImage *exitItem = CCMenuItemImage::create(
-// 		"exit_button.png",
-// 		"exit_button_press.png",
-// 		this,
-// 		menu_selector(MenuScene::exitCallback));
-// 
-// 	exitItem->setPosition(ccp(origin.x + visibleSize.width/2,
-// 		settingItem->getPositionY() - settingItem->getContentSize().height/2 - exitItem->getContentSize().height/2 - 10));
-
-	
-
-    CCMenu* pMenu = CCMenu::create(playItem, aboutItem, soundToggle, NULL);
+    CCMenu* pMenu = CCMenu::create(playItem, aboutItem, exitItem, soundToggle, NULL);
     pMenu->setPosition(CCPointZero);
     this->addChild(pMenu, 1);
 
-	AudioManager::sharedAudioManager()->PlayBackground("background.ogg");
+	AudioManager::sharedAudioManager()->PlayBackground("background.mp3");
 
 	EffectLayer::PreLoad();
 
@@ -133,7 +131,7 @@ void MenuScene::soundCallback( CCObject* pSender )
 		AudioManager::sharedAudioManager()->SetEnableEffect(true);
 
 		//
-		AudioManager::sharedAudioManager()->PlayBackground("background.ogg");
+		AudioManager::sharedAudioManager()->PlayBackground("background.mp3");
 	}
 }
 
@@ -149,12 +147,12 @@ void MenuScene::aboutCallback( CCObject* pSender )
 	CCDirector::sharedDirector()->replaceScene(pScene);
 }
 
-// void MenuScene::exitCallback( CCObject* pSender )
-// {
-// 	CCDirector::sharedDirector()->end();
-// }
+void MenuScene::exitCallback( CCObject* pSender )
+{
+	CCDirector::sharedDirector()->end();
+}
 
 void MenuScene::keyBackClicked()
 {
-	CCDirector::sharedDirector()->end();
+	exitCallback(NULL);
 }
