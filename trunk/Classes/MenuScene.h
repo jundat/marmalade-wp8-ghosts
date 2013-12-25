@@ -15,7 +15,7 @@ public:
     
     void playCallback(CCObject* pSender);
 	void aboutCallback(CCObject* pSender);
-/*	void exitCallback(CCObject* pSender);*/
+	void exitCallback(CCObject* pSender);
 	void soundCallback(CCObject* pSender);
 };
 

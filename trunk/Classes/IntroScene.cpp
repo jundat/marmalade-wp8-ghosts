@@ -28,7 +28,7 @@ bool IntroScene::init()
 	bg->runAction(CCSequence::create(
 		CCFadeIn::create(2.0f),
 		CCDelayTime::create(1.0f),
-		CCFadeOut::create(2.0f),
+		CCFadeOut::create(0.5f),
 		CCCallFunc::create(this, callfunc_selector(IntroScene::MenuCallback)),
 		NULL));
 

@@ -12,7 +12,7 @@ public:
     static cocos2d::CCScene* scene();
 	CREATE_FUNC(AboutScene);
 
-/*	void menuCallback(CCObject* pSender);*/
+	void menuCallback(CCObject* pSender);
 	virtual void keyBackClicked();
 };
 

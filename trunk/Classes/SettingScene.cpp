@@ -123,7 +123,7 @@ void SettingScene::soundCallback( CCObject* pSender )
 		AudioManager::sharedAudioManager()->SetEnableEffect(true);
 
 		//
-		AudioManager::sharedAudioManager()->PlayBackground("background.ogg");
+		AudioManager::sharedAudioManager()->PlayBackground("background.mp3");
 	}
 }
 

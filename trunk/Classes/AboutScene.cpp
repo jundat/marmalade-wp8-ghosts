@@ -29,36 +29,31 @@ bool AboutScene::init()
 	setting_top->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
 	this->addChild(setting_top, 0);
 
-	//
+	CCMenuItemImage *backItem = CCMenuItemImage::create(
+		"back_button.png",
+		"back_button_press.png",
+		this,
+		menu_selector(AboutScene::menuCallback));
 
-// 	CCMenuItemImage *backItem = CCMenuItemImage::create(
-// 		"back_button.png",
-// 		"back_button_press.png",
-// 		this,
-// 		menu_selector(AboutScene::menuCallback));
-// 
-// 	backItem->setPosition(ccp(origin.x + visibleSize.width/2,
-// 		origin.y + 0.75f * backItem->getContentSize().height));
-// 
-// 	//
-// 
-// 	CCMenu* pMenu = CCMenu::create(backItem, NULL);
-// 	pMenu->setPosition(CCPointZero);
-// 	this->addChild(pMenu, 1);
+	backItem->setPosition(ccp(origin.x + visibleSize.width/2,
+		origin.y + backItem->getContentSize().height - 3));
+	
+	CCMenu* pMenu = CCMenu::create(backItem, NULL);
+	pMenu->setPosition(CCPointZero);
+	this->addChild(pMenu, 1);
 	
 	this->setKeypadEnabled(true);
 
     return true;
 }
 
-// void AboutScene::menuCallback(CCObject* pSender)
-// {
-// 	CCScene *pScene = MenuScene::scene();
-// 	CCDirector::sharedDirector()->replaceScene(pScene);
-// }
-
-void AboutScene::keyBackClicked()
+void AboutScene::menuCallback(CCObject* pSender)
 {
 	CCScene *pScene = CCTransitionFade::create(0.5, MenuScene::scene());
 	CCDirector::sharedDirector()->replaceScene(pScene);
+}
+
+void AboutScene::keyBackClicked()
+{
+	menuCallback(NULL);
 }
