@@ -35,11 +35,53 @@ files
 	Main.cpp
 
 	(../Classes)
+	AboutScene.cpp
+	AboutScene.h
 	AppDelegate.cpp
 	AppDelegate.h
-	HelloWorldScene.cpp
-	HelloWorldScene.h
-
+	AudioManager.cpp
+	AudioManager.h
+	BackgroundLayer.cpp
+	BackgroundLayer.h
+	Bullet.cpp
+	Bullet.h
+	CCParallaxNodeExtras.cpp
+	CCParallaxNodeExtras.h
+	CollisionDetection.cpp
+	CollisionDetection.h
+	ConfigLoader.cpp
+	ConfigLoader.h
+	DataManager.cpp
+	DataManager.h
+	EffectLayer.cpp
+	EffectLayer.h
+	Enemy.cpp
+	Enemy.h
+	GameObject.cpp
+	GameObject.h
+	Global.cpp
+	Global.h
+	IntroScene.cpp
+	IntroScene.h
+	Item.cpp
+	Item.h
+	LevelLoader.cpp
+	LevelLoader.h
+	LoseDialog.cpp
+	LoseDialog.h
+	MainGameScene.cpp
+	MainGameScene.h
+	MenuScene.cpp
+	MenuScene.h
+	MyMacro.h
+	ObjectLayer.cpp
+	ObjectLayer.h
+	PauseDialog.cpp
+	PauseDialog.h
+	SettingScene.cpp
+	SettingScene.h
+	Ship.cpp
+	Ship.h
 }
 
 

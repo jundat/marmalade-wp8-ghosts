@@ -1,0 +1,14 @@
+S3E runtime Crashlog
+--------------------
+
+System Information:
+
+   SDK Version    : 7.1.0 [358387] (S3E ABI v4.36.0)
+   OS             : WINDOWS (3)
+   OS Version     : Windows 6.1 (6.1)
+   Device ID      : Windows Simulator (1)
+   Device Class   : WINDOWS_GENERIC (3000)
+
+Crash Information:
+
+Memory exception (11) attempting to access: 00000C80 [ip=535F165E]
