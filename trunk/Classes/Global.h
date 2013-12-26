@@ -24,8 +24,8 @@ const static int G_MOVE_CIRCLE_RIGHT = 2;
 //////////////////////////////////////////////////////////////////////////
 
 //Variant
- extern int G_DESIGN_WIDTH;
- extern int G_DESIGN_HEIGHT;
+ extern float G_DESIGN_WIDTH;
+ extern float G_DESIGN_HEIGHT;
  extern float G_SCALE_FACTOR;
 
  extern int G_PLAYER_HP;

@@ -7,7 +7,7 @@ Bullet::Bullet(int type, float vy, float damage, CCPoint position) : GameObject(
 {
 	this->setBulletType(type);
 	this->setVy(vy);
-	this->setDamage(damage);
+	this->setDamage((int)damage);
 	this->setPosition(position);
 }
 

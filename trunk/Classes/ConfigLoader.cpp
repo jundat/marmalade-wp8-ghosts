@@ -21,8 +21,8 @@ ConfigLoader::ConfigLoader(void)
 	CCLOG("------------CONFIG-----------");
 
 	//save to variant
-	G_DESIGN_WIDTH = GetValue("G_DESIGN_WIDTH")->intValue();
-	G_DESIGN_HEIGHT = GetValue("G_DESIGN_HEIGHT")->intValue();
+	G_DESIGN_WIDTH = GetValue("G_DESIGN_WIDTH")->floatValue();
+	G_DESIGN_HEIGHT = GetValue("G_DESIGN_HEIGHT")->floatValue();
 	G_SCALE_FACTOR = GetValue("G_SCALE_FACTOR")->floatValue();
 
 	G_PLAYER_HP = GetValue("G_PLAYER_HP")->intValue();

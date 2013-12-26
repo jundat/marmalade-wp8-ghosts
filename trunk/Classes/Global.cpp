@@ -19,8 +19,8 @@ int G_ITEM_BOOM = 3;
 //////////////////////////////////////////////////////////////////////////
 
 //Variant
-int G_DESIGN_WIDTH = 768;
-int G_DESIGN_HEIGHT = 1280;
+float G_DESIGN_WIDTH = 768.0f;
+float G_DESIGN_HEIGHT = 1280.0f;
 float G_SCALE_FACTOR = 0.55f;
 
 int G_PLAYER_HP = 100;
