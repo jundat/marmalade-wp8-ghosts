@@ -2,7 +2,6 @@
 #define __GAME_BACKGROUND_LAYER_H__
 
 #include "cocos2d.h"
-#include "CCParallaxNodeExtras.h"
 USING_NS_CC;
 
 class BackgroundLayer : public cocos2d::CCLayer
