@@ -28,15 +28,16 @@ bool IntroScene::init()
 	bg->runAction(CCSequence::create(
 		CCFadeIn::create(2.0f),
 		CCDelayTime::create(1.0f),
-		CCFadeOut::create(0.5f),
+		CCFadeOut::create(1.0f),
 		CCCallFunc::create(this, callfunc_selector(IntroScene::MenuCallback)),
 		NULL));
 
+	CCScene *pScene = MenuScene::scene();
     return true;
 }
 
 void IntroScene::MenuCallback()
 {
-	CCScene *pScene = CCTransitionFade::create(0.5, MenuScene::scene());
+	CCScene *pScene = MenuScene::scene();
 	CCDirector::sharedDirector()->replaceScene(pScene);
 }
