@@ -2,7 +2,6 @@
 #define __EFFECT_LAYER_H__
 
 #include "cocos2d.h"
-#include "CCParallaxNodeExtras.h"
 USING_NS_CC;
 
 class EffectLayer : public cocos2d::CCLayer

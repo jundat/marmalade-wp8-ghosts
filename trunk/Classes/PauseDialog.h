@@ -2,7 +2,6 @@
 #define __PAUSE_DIALOG_H__
 
 #include "cocos2d.h"
-#include "CCParallaxNodeExtras.h"
 USING_NS_CC;
 
 class PauseDialog : public cocos2d::CCLayer
