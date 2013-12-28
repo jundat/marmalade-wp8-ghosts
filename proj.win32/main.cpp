@@ -2,8 +2,6 @@
 #include "AppDelegate.h"
 #include "CCEGLView.h"
 #include "Global.h"
-#include "ConfigLoader.h"
-#include "LevelLoader.h"
 #include "AudioManager.h"
 
 USING_NS_CC;
@@ -16,9 +14,6 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
-
-	ConfigLoader::shareConfigLoader();
-	LevelLoader::shareConfigLoader();
 
 
     AppDelegate app;

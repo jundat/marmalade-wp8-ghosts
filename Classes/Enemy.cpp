@@ -1,8 +1,7 @@
-#include "Bullet.h"
 #include "ObjectLayer.h"
 #include "Enemy.h"
 #include "Global.h"
-#include "LevelLoader.h"
+
 
 USING_NS_CC;
 
@@ -38,9 +37,7 @@ bool Enemy::init()
 	this->setHp(1);
 
 	static float MOVE_TIME = 2.0f; //default
-	LevelData* ld = LevelLoader::shareConfigLoader()->GetValue((int)m_difficulty);
-
-	if (ld) MOVE_TIME = ld->m_time;
+	MOVE_TIME -= 0.005f;
 	m_moveTime = MOVE_TIME;
 
 	//random source and dest

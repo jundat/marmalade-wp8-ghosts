@@ -5,9 +5,7 @@
 #include "Global.h"
 #include "MyMacro.h"
 #include "Ship.h"
-#include "Bullet.h"
 #include "EffectLayer.h"
-#include "Item.h"
 
 USING_NS_CC;
 
@@ -17,7 +15,7 @@ public:
 	ObjectLayer(){}
 	~ObjectLayer(){
 		RELEASE(m_arrEnemies);
-		
+
 		if (_rt != NULL)
 		{
 			_rt->release();
@@ -46,9 +44,7 @@ private:
 	void ScheduleCheckCollision(float dt);
 
 private:
-	CC_SYNTHESIZE(float, m_playedTime, PlayedTime);
 	CC_SYNTHESIZE(int, m_score, Score);
-	CC_SYNTHESIZE(float, m_difficulty, Difficulty);
 	CC_SYNTHESIZE(bool, m_isEndGame, IsEndGame);
 	CC_SYNTHESIZE(Ship*, m_player, Player);
 	CCLabelBMFont* m_labelScore;
@@ -59,7 +55,6 @@ private:
 	CCArray* m_arrEnemies;
 	float m_timeToGenerateEnemy;
 	EffectLayer* m_EffectLayer;
-
 	//pixel check collision
 	static CCRenderTexture* _rt;
 };

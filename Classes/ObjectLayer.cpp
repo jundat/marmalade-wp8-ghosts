@@ -4,14 +4,14 @@
 #include "Enemy.h"
 #include "EffectLayer.h"
 #include "MainGameScene.h"
-#include "CollisionDetection.h"
-#include "LevelLoader.h"
 #include "DataManager.h"
+#include "CollisionDetection.h"
 
 USING_NS_CC;
 
 //pixel check collision
 CCRenderTexture* ObjectLayer::_rt = NULL;
+
 
 // on "init" you need to initialize your instance
 bool ObjectLayer::init()
@@ -38,11 +38,8 @@ bool ObjectLayer::init()
 
 	m_isEndGame = false;
 	m_score = 0;
-	m_playedTime = 0;
-	m_difficulty = 0;
 
 	m_labelScore = CCLabelBMFont::create("0", "Mia_64.fnt");
-	//m_labelScore->setScale(48.0f/64);
 	m_labelScore->setPosition(ccp(origin.x + visibleSize.width/2,
 		origin.y + visibleSize.height - m_labelScore->getContentSize().height));
 	this->addChild(m_labelScore, 10);
@@ -67,11 +64,13 @@ bool ObjectLayer::init()
 	this->schedule(schedule_selector(ObjectLayer::ScheduleCheckCollision), CCDirector::sharedDirector()->getAnimationInterval());
 	this->scheduleUpdate();
 
+
 	//pixel check collision
 	_rt  = CCRenderTexture::create(visibleSize.width, visibleSize.height);
 	_rt->retain();
 	_rt->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
 	_rt->setVisible(false);
+
 
     return true;
 }
@@ -100,10 +99,7 @@ void ObjectLayer::ccTouchEnded( CCTouch *pTouch, CCEvent *pEvent )
 //schedule generate enemy
 void ObjectLayer::ScheduleGenerateEnemy( float dt )
 {
-	m_difficulty = m_score;
-	int movetype = G_MOVE_STRAINGH;
-
-	Enemy* enemy = Enemy::create(m_difficulty, movetype);
+	Enemy* enemy = Enemy::create(m_score, G_MOVE_STRAINGH);
 	m_arrEnemies->addObject(enemy);
 	this->addChild(enemy);
 }
@@ -129,8 +125,6 @@ void ObjectLayer::update( float delta )
 		m_isEndGame = true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////
-	m_playedTime += delta;
 
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
@@ -177,6 +171,7 @@ void ObjectLayer::ScheduleCheckCollision(float dt)
 	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
 	CCObject* it1 = NULL;
+	//CCRect playerRect = m_player->boundingBox();
 
 	//Enemy -----------VS------------- Player
 	CCARRAY_FOREACH(m_arrEnemies, it1)
@@ -184,16 +179,20 @@ void ObjectLayer::ScheduleCheckCollision(float dt)
 		Enemy* enemy = dynamic_cast<Enemy*>(it1);
 		if (NULL != enemy)
 		{
+			//pixel check collision	
 			CCSprite* sprEnemy = CCSprite::createWithTexture(enemy->getSprite()->getTexture());
 			CCSprite* sprPlayer = CCSprite::createWithTexture(m_player->getSprite()->getTexture());
 			sprEnemy->setPosition(enemy->getPosition());
 			sprPlayer->setPosition(m_player->getPosition());
 
+			//CCRect enemyRect = enemy->boundingBox();
+
 			if (CollisionDetection::GetInstance()->areTheSpritesColliding(sprEnemy, sprPlayer, true, _rt))
+			//if (playerRect.intersectsRect(enemyRect))
 			{
 				AudioManager::sharedAudioManager()->PlayEffect("explosion.wav");
 				
-				m_player->HitBullet(enemy->getDamage());
+				m_player->HitBullet(1);
 				enemy->HitBullet(1000);
 
 				CCString* s = CCString::createWithFormat("HP: %d", (m_player->getHp() > 0) ? m_player->getHp() : 0);
@@ -238,7 +237,6 @@ void ObjectLayer::RestartGame()
 	//	score
 	//	numberBoom
 	
-	m_playedTime = 0;
 	m_score = 0;
 
 	m_arrEnemies->removeAllObjects();

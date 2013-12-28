@@ -1,5 +1,4 @@
 #include "Ship.h"
-#include "Bullet.h"
 #include "ObjectLayer.h"
 #include "Global.h"
 #include "MyMacro.h"

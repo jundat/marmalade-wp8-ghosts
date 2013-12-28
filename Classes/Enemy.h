@@ -27,7 +27,7 @@ public:
 	CC_SYNTHESIZE(int, m_damage, Damage); //3 ~ damage for bullet
 
 	EffectLayer* m_EffectLayer;	
-
+	
 public:
 	static void DifficultySplit(float difficulty, float& vx, float& vy, int& hp, int& dm);
 
