@@ -16,6 +16,7 @@ GameObject::~GameObject()
 {
 }
 
+//goc duoi ben trai
 cocos2d::CCRect GameObject::boundingBox()
 {
 	CCRect rect = m_sprite->boundingBox();
