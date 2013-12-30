@@ -10,7 +10,7 @@
 USING_NS_CC;
 
 //pixel check collision
-CCRenderTexture* ObjectLayer::_rt = NULL;
+/*CCRenderTexture* ObjectLayer::_rt = NULL;*/
 
 
 // on "init" you need to initialize your instance
@@ -66,10 +66,10 @@ bool ObjectLayer::init()
 
 
 	//pixel check collision
-	_rt  = CCRenderTexture::create(visibleSize.width, visibleSize.height);
-	_rt->retain();
-	_rt->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
-	_rt->setVisible(false);
+// 	_rt  = CCRenderTexture::create(visibleSize.width, visibleSize.height);
+// 	_rt->retain();
+// 	_rt->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
+// 	_rt->setVisible(false);
 
 
     return true;
@@ -171,7 +171,7 @@ void ObjectLayer::ScheduleCheckCollision(float dt)
 	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
 	CCObject* it1 = NULL;
-	//CCRect playerRect = m_player->boundingBox();
+	CCRect playerRect = m_player->boundingBox();
 
 	//Enemy -----------VS------------- Player
 	CCARRAY_FOREACH(m_arrEnemies, it1)
@@ -180,15 +180,15 @@ void ObjectLayer::ScheduleCheckCollision(float dt)
 		if (NULL != enemy)
 		{
 			//pixel check collision	
-			CCSprite* sprEnemy = CCSprite::createWithTexture(enemy->getSprite()->getTexture());
-			CCSprite* sprPlayer = CCSprite::createWithTexture(m_player->getSprite()->getTexture());
-			sprEnemy->setPosition(enemy->getPosition());
-			sprPlayer->setPosition(m_player->getPosition());
+// 			CCSprite* sprEnemy = CCSprite::createWithTexture(enemy->getSprite()->getTexture());
+// 			CCSprite* sprPlayer = CCSprite::createWithTexture(m_player->getSprite()->getTexture());
+// 			sprEnemy->setPosition(enemy->getPosition());
+// 			sprPlayer->setPosition(m_player->getPosition());
 
-			//CCRect enemyRect = enemy->boundingBox();
+			CCRect enemyRect = enemy->boundingBox();
 
-			if (CollisionDetection::GetInstance()->areTheSpritesColliding(sprEnemy, sprPlayer, true, _rt))
-			//if (playerRect.intersectsRect(enemyRect))
+			//if (CollisionDetection::GetInstance()->areTheSpritesColliding(sprEnemy, sprPlayer, true, _rt))
+			if (playerRect.intersectsRect(enemyRect))
 			{
 				AudioManager::sharedAudioManager()->PlayEffect("explosion.wav");
 				

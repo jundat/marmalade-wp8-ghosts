@@ -8,7 +8,7 @@ USING_NS_CC;
 class MenuScene : public cocos2d::CCLayer
 {
 public:
-    virtual bool init();  
+    virtual bool init();
     static cocos2d::CCScene* scene();
 	CREATE_FUNC(MenuScene);
 
