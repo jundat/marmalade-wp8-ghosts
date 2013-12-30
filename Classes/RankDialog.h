@@ -3,11 +3,8 @@
 
 #include "cocos2d.h"
 #include "cocos-ext.h"
-#include "HttpClient.h"
-#include "ParseClient.h"
 
 USING_NS_CC;
-USING_NS_CC_EXT;
 
 class RankDialog : public cocos2d::CCLayer
 {
@@ -24,7 +21,6 @@ public:
 
 	void menuCallBack(CCObject* pSender);
 	void afterSlideCallback();
-	void onHttpRequestCompleted(CCHttpClient *sender, CCHttpResponse *response);
 };
 
 #endif // __RANK_DIALOG_H__
