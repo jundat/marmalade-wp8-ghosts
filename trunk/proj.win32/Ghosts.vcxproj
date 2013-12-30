@@ -45,7 +45,7 @@
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration).win32\</IntDir>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration).win32\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration).win32\</IntDir>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
@@ -142,9 +142,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\MainGameScene.cpp" />
     <ClCompile Include="..\Classes\MenuScene.cpp" />
     <ClCompile Include="..\Classes\ObjectLayer.cpp" />
-    <ClCompile Include="..\Classes\ParseClient.cpp" />
     <ClCompile Include="..\Classes\PauseDialog.cpp" />
-    <ClCompile Include="..\Classes\RankDialog.cpp" />
     <ClCompile Include="..\Classes\Ship.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -165,9 +163,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\MenuScene.h" />
     <ClInclude Include="..\Classes\MyMacro.h" />
     <ClInclude Include="..\Classes\ObjectLayer.h" />
-    <ClInclude Include="..\Classes\ParseClient.h" />
     <ClInclude Include="..\Classes\PauseDialog.h" />
-    <ClInclude Include="..\Classes\RankDialog.h" />
     <ClInclude Include="..\Classes\Ship.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
