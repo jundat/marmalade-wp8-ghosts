@@ -15,8 +15,8 @@ public:
 	CC_SYNTHESIZE(CCSprite*, mainSpr, MainSprite);
 
 public:
-	void MenuCallback(CCObject* pSender);
-	void ResumeCallBack(CCObject* pSender);
+	void menuCallback(CCObject* pSender);
+	void resumeCallBack(CCObject* pSender);
 };
 
 #endif // __PAUSE_DIALOG_H__

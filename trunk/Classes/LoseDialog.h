@@ -15,8 +15,8 @@ public:
 	CC_SYNTHESIZE(CCSprite*, mainSpr, MainSprite);
 
 public:
-	void MenuCallBack(CCObject* pSender);
-	void PlayAgainCallBack(CCObject* pSender);
+	void menuCallBack(CCObject* pSender);
+	void playAgainCallBack(CCObject* pSender);
 };
 
 #endif // __LOSE_DIALOG_H__

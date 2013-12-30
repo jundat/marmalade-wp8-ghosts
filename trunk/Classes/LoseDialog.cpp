@@ -10,55 +10,64 @@ bool LoseDialog::init()
     {
         return false;
     }
-    
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-    CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
 	mainSpr = CCSprite::create();
 
 	//////////////////////////////////////////////////////////////////////////
 
-	CCSprite* bg = CCSprite::create("lose_dialog.png");
-	bg->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+	CCSprite* bg = CCSprite::create("dialog.png");
+	bg->setPosition(ccp(768/2, 1280/2));
 	mainSpr->addChild(bg, -2);
 	
+	CCLabelBMFont* lb1 = CCLabelBMFont::create("Game over!", "Mia_64.fnt");
+	//lbResume->setScale(0.65f);
+	lb1->setColor(ccc3(0,0,0));
+	lb1->setPosition(ccp(768/2, 1280/2 + 80));
+	mainSpr->addChild(lb1);
+
+	CCLabelBMFont* lb2 = CCLabelBMFont::create("Again?", "Mia_64.fnt");
+	//lbResume->setScale(0.65f);
+	lb2->setColor(ccc3(0,0,0));
+	lb2->setPosition(ccp(768/2, 1280/2));
+	mainSpr->addChild(lb2);
+
 	CCMenuItemImage* menuButton = CCMenuItemImage::create(
 		"button.png",
 		"buttonPress.png",
 		this,
-		menu_selector(LoseDialog::MenuCallBack));
+		menu_selector(LoseDialog::menuCallBack));
 
 	menuButton->setScale(0.6f);
-	menuButton->setPosition(ccp(origin.x + 250, origin.y + visibleSize.height - 965 + 110));
+	menuButton->setPosition(ccp(250, 1280 - 965 + 110));
 
 	CCMenuItemImage* resumeButton = CCMenuItemImage::create(
 		"button.png",
 		"buttonPress.png",
 		this,
-		menu_selector(LoseDialog::PlayAgainCallBack));
+		menu_selector(LoseDialog::playAgainCallBack));
 	resumeButton->setScale(0.6f);
-	resumeButton->setPosition(ccp(origin.x + 536, origin.y + visibleSize.height - 965 + 110));
+	resumeButton->setPosition(ccp(536, 1280 - 965 + 110));
 
 	CCMenu* menu = CCMenu::create(menuButton, resumeButton, NULL);
-	menu->setPosition(origin);
+	menu->setPosition(CCPointZero);
 	mainSpr->addChild(menu);
 
 	CCLabelBMFont* lbMenu = CCLabelBMFont::create("MENU", "Mia_64.fnt");
 	lbMenu->setScale(0.65f);
 	lbMenu->setColor(ccc3(0,0,0));
-	lbMenu->setPosition(ccp(origin.x + 250, origin.y + visibleSize.height - 965 + 110));
+	lbMenu->setPosition(ccp(250, 1280 - 965 + 110));
 	mainSpr->addChild(lbMenu);
 
 	CCLabelBMFont* lbResume = CCLabelBMFont::create("RETRY", "Mia_64.fnt");
 	lbResume->setScale(0.65f);
 	lbResume->setColor(ccc3(0,0,0));
-	lbResume->setPosition(ccp(origin.x + 536, origin.y + visibleSize.height - 965 + 110));
+	lbResume->setPosition(ccp(536, 1280 - 965 + 110));
 	mainSpr->addChild(lbResume);
 
 	//run
 	this->addChild(mainSpr);
 
-	mainSpr->setPosition(ccp(visibleSize.width/2 - mainSpr->getContentSize().width/2, 0));
+	mainSpr->setPosition(ccp(768/2 - mainSpr->getContentSize().width/2, 0));
 	CCActionInterval* move = CCMoveTo::create(2, CCPointZero);
 	CCAction* ease = CCEaseElasticOut::create(move);
 	mainSpr->runAction(ease);
@@ -66,14 +75,14 @@ bool LoseDialog::init()
     return true;
 }
 
-void LoseDialog::PlayAgainCallBack( CCObject* pSender )
+void LoseDialog::playAgainCallBack( CCObject* pSender )
 {
 	MainGameScene* parent = (MainGameScene*) this->getParent();
 	parent->playAgainCallback();
 	this->removeFromParent();
 }
 
-void LoseDialog::MenuCallBack( CCObject* pSender )
+void LoseDialog::menuCallBack( CCObject* pSender )
 {
 	CCScene *pScene = CCTransitionFade::create(0.5, MenuScene::scene());
 	CCDirector::sharedDirector()->replaceScene(pScene);
