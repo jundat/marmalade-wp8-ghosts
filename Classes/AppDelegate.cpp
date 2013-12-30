@@ -37,7 +37,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	pEGLView->setDesignResolutionSize(G_DESIGN_WIDTH, G_DESIGN_HEIGHT, kResolutionExactFit);
 
     // create a scene. it's an autorelease object
-    CCScene *pScene =  IntroScene::scene(); // MenuScene::scene(); //  MainGameScene::scene(); //
+    CCScene *pScene = MenuScene::scene(); //   IntroScene::scene(); // MainGameScene::scene(); //
 	
     // run
     pDirector->runWithScene(pScene);
