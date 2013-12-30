@@ -16,11 +16,11 @@ public:
 	~ObjectLayer(){
 		RELEASE(m_arrEnemies);
 
-		if (_rt != NULL)
-		{
-			_rt->release();
-		}
-	};
+// 		if (_rt != NULL)
+// 		{
+// 			_rt->release();
+// 		};
+	}
 
     virtual bool init();
 	CREATE_FUNC(ObjectLayer);
@@ -56,7 +56,7 @@ private:
 	float m_timeToGenerateEnemy;
 	EffectLayer* m_EffectLayer;
 	//pixel check collision
-	static CCRenderTexture* _rt;
+/*	static CCRenderTexture* _rt;*/
 };
 
 #endif // __GAME_OBJECT_MANAGER_H__
